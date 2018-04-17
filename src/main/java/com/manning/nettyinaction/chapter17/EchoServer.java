@@ -39,7 +39,7 @@ public class EchoServer {
                             // 注册两个InboundHandler，执行顺序为注册顺序，所以应该是InboundHandler1 InboundHandler2
                             // 注册两个OutboundHandler，执行顺序为注册顺序的逆序，所以应该是OutboundHandler2 OutboundHandler1
                             ch.pipeline().addLast(eventExecutorGroup1, new EchoInHandler1());
-                            ch.pipeline().addLast(new EchoInHandler5());
+                            ch.pipeline().addLast(eventExecutorGroup1, new EchoInHandler5());
                             ch.pipeline().addLast(eventExecutorGroup2, new EchoOutHandler1());
                             ch.pipeline().addLast(eventExecutorGroup3, new EchoOutHandler2());
                             ch.pipeline().addLast(eventExecutorGroup4, new EchoInHandler2());
